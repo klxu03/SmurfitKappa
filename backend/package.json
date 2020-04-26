@@ -1,0 +1,14 @@
+{
+  "name": "Backend",
+  "version": "1.0.0",
+  "description": "The backend of SmurfkitKappa",
+  "main": "server.js",
+  "author": "Kevin",
+  "license": "MIT",
+  "dependencies": {
+    "busboy": "^0.3.1",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.11.0",
+    "firebase-functions": "^3.6.1"
+  }
+}
