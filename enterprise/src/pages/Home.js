@@ -3,7 +3,7 @@ import ImageUploader from 'react-images-upload';
 
 import axios from 'axios';
 
-import { IonPage, IonButton, IonItem, IonLabel, IonInput } from '@ionic/react';
+import { IonPage, IonButton, IonItem, IonLabel, IonInput, IonGrid, IonRow } from '@ionic/react';
 
 /* === Components === */
 
@@ -24,10 +24,10 @@ const Home = () => {
             formData.append('image', image, 'Walmart');
             axios.post('/user/image', formData)
                 .then(res => {
-    
+
                 })
                 .catch(err => console.log(err))
-        } 
+        }
 
         //Check if the company description is empty
 
@@ -35,24 +35,28 @@ const Home = () => {
 
     return (
         <IonPage>
-            <ImageUploader
-                withIcon={true}
-                buttonText='Select an Image'
-                onChange={onDrop}
-                imgExtension={['.jpg', '.png']}
-                maxFileSize={5242880}
-                label='Plesae upload an image'
-                withPreview={true}
-                singleImage={true}
-            />
-
-            <IonItem>
-                <IonLabel position="floating">
-                    Company Description
+            <IonGrid>
+                <IonRow>
+                    <ImageUploader
+                        withIcon={true}
+                        buttonText='Select an Image'
+                        onChange={onDrop}
+                        imgExtension={['.jpg', '.png']}
+                        maxFileSize={5242880}
+                        label='Plesae upload an image'
+                        withPreview={true}
+                        singleImage={true}
+                    />
+                </IonRow>
+                <IonRow>
+                    <IonItem>
+                        <IonLabel position="floating">
+                            Company Description
                 </IonLabel>
-                <IonInput type="text" ref={descriptionRef}></IonInput>
-            </IonItem>
-
+                        <IonInput type="text" ref={descriptionRef}></IonInput>
+                    </IonItem>
+                </IonRow>
+            </IonGrid>
             <IonButton expand="block" onClick={handleSubmit}>Submit</IonButton>
         </IonPage>
 
