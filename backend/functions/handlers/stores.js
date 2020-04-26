@@ -7,42 +7,43 @@ const firebase = require("firebase");
 firebase.initializeApp(config);
 
 const signup = (req, res) => {
-    const newStore = {
+    const newUser = {
         email: req.body.email,
         password: req.body.password,
         confirmPassword: req.body.confirmPassword,
-        storeName: req.body.storeName,
+        handle: req.body.handle,
+        type: req.body.type
     }
-    console.log('New store object created');
+    const type = newUser.type;
 
-    //TODO: validate data
-    let token, storeId;
-    db.doc(`stores/${newStore.storeName}`).get()
+    //TODO: valida the data
+    let token, userId;
+    db.doc(`${type}s/${newUser.handle}`).get()
         .then(doc => {
             console.log('In the first then')
             if (doc.exists) {
-                return res.status(400).json({ storeName: `The store name ${newStore.storeName} is already taken` })
+                return res.status(400).json({ handle: `The user's name ${newUser.handle} is already taken` })
             } else {
                 console.log('Creating new user')
                 return firebase.auth()
-                    .createUserWithEmailAndPassword(newStore.email, newStore.password)
+                    .createUserWithEmailAndPassword(newUser.email, newUser.password)
             }
         })
         .then(data => {
             console.log('Just created the user')
-            storeId = data.user.uid;
+            userId = data.user.uid;
             return data.user.getIdToken();
         })
         .then(idToken => {
             token = idToken;
-            const storeCredentials = {
-                storeName: newStore.storeName,
-                email: newStore.email,
+            const credentials = {
+                handle: newUser.handle,
+                email: newUser.email,
                 createdAt: new Date().toISOString(),
                 token
             };
 
-            return db.doc(`/stores/${newStore.storeName}`).set(storeCredentials);            
+            return db.doc(`/${type}s/${newUser.handle}`).set(credentials);            
         })
         .then(() => {
             return res.status(201).json({ token })
@@ -55,7 +56,6 @@ const signup = (req, res) => {
                 return res.status(500).json({ error: err.code });
             }
         })
-
 }
 
 const uploadImage = (req, res) => {
@@ -103,7 +103,7 @@ const uploadImage = (req, res) => {
             .then(() => {
                 // Append token to url
                 const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media&token=${generatedToken}`; //Maybe take out &token=${generatedToken}
-                return db.doc(`/stores/${req.store.storeName}`).update({ imageUrl });
+                return db.doc(`/stores/${req.user.handle}`).update({ imageUrl });
             })
             .then(() => {
                 return res.json({ message: "image uploaded successfully" });
