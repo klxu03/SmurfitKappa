@@ -36,10 +36,11 @@ const Profile = () => {
   };
 
   const submitHandler = () => {
+    console.log('Just tried to submit')
     const enteredUsername = usernameInputRef.current?.value;
     const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
-    const enteredConfirmPassword = confirmPasswordRef.current?.value;
+    const enteredConfirmPassword = confirmPasswordInputRef.current?.value;
 
     if (status == 'Register') {
         if(!enteredEmail || enteredConfirmPassword) {
@@ -58,9 +59,12 @@ const Profile = () => {
 
   const resetHandler = () => {
     usernameInputRef.current.value = '';
-    emailInputRef.current.value = '';
     passwordInputRef.current.value = '';
-    confirmPasswordRef.current.value = '';
+
+    if (status == 'Register') {
+      emailInputRef.current.value = '';
+      confirmPasswordInputRef.current.value = '';
+    }
   };
 
   const clearError = () => {

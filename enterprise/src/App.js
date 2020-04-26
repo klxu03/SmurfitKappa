@@ -41,12 +41,10 @@ const App = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            {/* <Switch> */}
             <Route path="/profile" component={loggedIn ? Profile : Login} />
             <Route path="/home" component={Home} exact />
             <Redirect exact from="/" to="/home" />
             <Route path="/store/:name" component={StoreModal} />
-            {/* </Switch> */}
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="profile" href="/profile">
