@@ -14,12 +14,15 @@ function App() {
   return (
     <IonPage>
       <Title/>
-      <ImageUpload />
       <br></br>
       <Qr />
-      <br></br>
+
+      <ImageUpload />
+    <br></br>
+
       <ProgressBar/>
       <br></br>
+
     </IonPage>
 
   );

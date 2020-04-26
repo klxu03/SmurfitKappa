@@ -2,11 +2,12 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInp
 import React from 'react';
 import './title.css';
  
+import logo2 from './red_line.gif';
 
 const Home: React.FC = () => {
   return (
 <>
-<h1>Smurfit Kappa</h1>
+<b><h1>Smurfit Kappa</h1></b>
 
 </>
   );
