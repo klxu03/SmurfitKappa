@@ -31,6 +31,7 @@ import './theme/variables.css';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userToken, setUserToken] = useState();
 
   useEffect(() => {
     setLoggedIn(false);
@@ -41,9 +42,16 @@ const App = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route path="/profile" component={loggedIn ? Profile : Login} />
-            <Route path="/home" component={Home} exact />
-            <Redirect exact from="/" to="/home" />
+            {/* <Route path="/profile" component={loggedIn ? Profile : Login} />\            <Route path="/profile" component={loggedIn ? Profile : Login} /> */}
+            <Route path="/profile" render={() => {
+              if(loggedIn) {
+                return <Profile />
+              } else {
+                return <Login />
+              }
+            }} exact />
+            <Route path="/" component={() => <Home id={userToken}/>} exact />
+            {/* <Redirect from="/" to="/home" /> */}
             <Route path="/store/:name" component={StoreModal} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
@@ -51,7 +59,7 @@ const App = () => {
               <IonIcon icon={personCircleOutline} />
               <IonLabel>Profile</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="Home" href="/Home">
+            <IonTabButton tab="Home" href="/">
               <IonIcon icon={walletOutline} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
