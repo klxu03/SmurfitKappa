@@ -25,21 +25,30 @@ const Profile = () => {
   console.log('Looking at profile');
 
   const usernameInputRef = useRef(null);
+  const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
+  const confirmPasswordInputRef = useRef(null);
   const [error, setError] = useState();
   const [status, setStatus] = useState('Login');
 
   const setStatusHandler = (selectedType) => {
-    debugger;
     setStatus(selectedType);
   };
 
   const submitHandler = () => {
     const enteredUsername = usernameInputRef.current?.value;
+    const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
+    const enteredConfirmPassword = confirmPasswordRef.current?.value;
 
+    if (status == 'Register') {
+        if(!enteredEmail || enteredConfirmPassword) {
+          setError('Please fill out all forms')
+        }
+    }
     if (!enteredUsername || !enteredPassword) {
-      setError('Please submit a valid username or password');
+
+      setError('Please fill out all forms');
 
       return;
     }
@@ -49,7 +58,9 @@ const Profile = () => {
 
   const resetHandler = () => {
     usernameInputRef.current.value = '';
+    emailInputRef.current.value = '';
     passwordInputRef.current.value = '';
+    confirmPasswordRef.current.value = '';
   };
 
   const clearError = () => {
@@ -98,6 +109,17 @@ const Profile = () => {
               </IonCol>
             </IonRow>
 
+            {status == 'Register' &&
+              <IonRow>
+                <IonCol>
+                  <IonItem>
+                    <IonLabel position="floating">Email</IonLabel>
+                    <IonInput type="text" ref={emailInputRef}></IonInput>
+                  </IonItem>
+                </IonCol>
+              </IonRow>
+            }
+
             <IonRow>
               <IonCol>
                 <IonItem>
@@ -106,6 +128,17 @@ const Profile = () => {
                 </IonItem>
               </IonCol>
             </IonRow>
+
+            {status == 'Register' &&
+              <IonRow>
+                <IonCol>
+                  <IonItem>
+                    <IonLabel position="floating">Confirm Password</IonLabel>
+                    <IonInput type="text" ref={confirmPasswordInputRef}></IonInput>
+                  </IonItem>
+                </IonCol>
+              </IonRow>
+            }
 
             <Submission onSubmit={submitHandler} onReset={resetHandler} />
           </IonGrid>
