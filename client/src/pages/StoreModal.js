@@ -30,10 +30,9 @@ import {
 const StoreModal = (match) => {
   const name = match.match.params.name;
 
-  const storeName = 'Please put this as the store name';
+  const storeName = name;
   const storeWebsite = 'storeWebsite.com';
   const storeDescription = `Here is the description of the store. The name is ${name}`;
-  const storeImage = 'asdf';
 
   const [showActionSheet, setShowActionSheet] = useState(false);
   const [actionSheetButtons, setActionSheetButtons] = useState([]);
@@ -55,7 +54,7 @@ const StoreModal = (match) => {
         <IonHeader className="ion-no-border">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/home" />
+              <IonBackButton defaultHref="/" />
             </IonButtons>
             <IonButtons slot="end">
               <IonButton onClick={() => openContact()}>
@@ -66,7 +65,6 @@ const StoreModal = (match) => {
         </IonHeader>
 
         <div className="speaker-background">
-          <img src={storeImage} alt="storeImage.png" />
           <h2>{storeName}</h2>
         </div>
 

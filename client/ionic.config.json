@@ -1,5 +1,7 @@
 {
   "name": "Enterprise App",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

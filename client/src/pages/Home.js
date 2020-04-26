@@ -5,7 +5,7 @@ import Title from '../moreComponents/title.js';
 
 import Qr from '../moreComponents/qr.js';
 
-import { IonPage } from '@ionic/react';
+import { IonPage, IonButton } from '@ionic/react';
 
 /* === Components === */
 import ImageUpload from '../moreComponents/ImageUpload.js';
@@ -22,6 +22,8 @@ function App() {
 
       <ProgressBar/>
       <br></br>
+
+      <IonButton expand="block" href="/store/walmart">View Your Profile</IonButton>
 
     </IonPage>
 
