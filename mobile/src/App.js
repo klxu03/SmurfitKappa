@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ProgressBar from './progressBar.js';
 
 import { IonApp } from '@ionic/react';
 
@@ -11,7 +12,10 @@ function App() {
   return (
     <IonApp>
       <ImageUpload />
+      <br></br>
+      <ProgressBar/>
     </IonApp>
+
   );
 }
 
