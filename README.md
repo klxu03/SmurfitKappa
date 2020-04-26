@@ -6,7 +6,7 @@ Hackathon Project For EarthxHacks 2020
 - Clone the project
 - cd to either the enterprise folder or the client folder
 - run npm i on your terminal
-- run ionic cordova run android -l (or if you don't have ionic, run npm start (this approach is not recommended though because it does not give you the qr scanner feature)
+- run ionic cordova run android -l (or if you don't have ionic, run npm start (this approach is not recommended though because it does not give you the qr scanner feature))
 
 ## Built With
 
