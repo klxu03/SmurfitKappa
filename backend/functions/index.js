@@ -10,18 +10,18 @@ app.post('/signup', signup);
 app.post('/login', login);
 app.post('/user/image', uploadImage);
 
-exports.getStores = functions.https.onRequest((req, res) => {
-    db.collection('stores').get()
-        .then(data => {
-            let stores = [];
+// exports.getStores = functions.https.onRequest((req, res) => {
+//     db.collection('stores').get()
+//         .then(data => {
+//             let stores = [];
 
-            data.forEach(doc => {
-                stores.push(doc.data())
-            })
+//             data.forEach(doc => {
+//                 stores.push(doc.data())
+//             })
 
-            return res.json(stores);
-        })
-        .catch(err => console.error(err));
-});
+//             return res.json(stores);
+//         })
+//         .catch(err => console.error(err));
+// });
 
 exports.api = functions.region('us-east4').https.onRequest(app);
