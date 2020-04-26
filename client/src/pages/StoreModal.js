@@ -30,7 +30,7 @@ import {
 const StoreModal = (match) => {
   const name = match.match.params.name;
 
-  const storeName = name;
+  const storeName = 'Please put this as the store name';
   const storeWebsite = 'storeWebsite.com';
   const storeDescription = `Here is the description of the store. The name is ${name}`;
 

@@ -22,8 +22,7 @@ function App() {
 
       <ProgressBar/>
       <br></br>
-
-      <IonButton expand="block" href="/store/walmart">View Your Profile</IonButton>
+      <IonButton expand="block" href="/store/walmart">Submit</IonButton>
 
     </IonPage>
 
