@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import {
-  IonApp,
   IonContent,
   IonGrid,
   IonRow,
@@ -72,7 +71,7 @@ const Profile = () => {
         ]}
       />
 
-      <IonApp>
+      <IonPage>
         <Menu title="profile" />
         <IonHeader>
           <IonToolbar>
@@ -111,7 +110,7 @@ const Profile = () => {
             <Submission onSubmit={submitHandler} onReset={resetHandler} />
           </IonGrid>
         </IonContent>
-      </IonApp>
+      </IonPage>
     </React.Fragment>
   );
 };

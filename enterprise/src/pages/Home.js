@@ -1,10 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 
+import { IonPage } from '@ionic/react';
+
 const Home = () => {
     return (
-        <React.Fragment>
+        <IonPage>
             Home
-        </React.Fragment>
+        </IonPage>
     );
 }
 

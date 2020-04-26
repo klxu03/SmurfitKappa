@@ -28,13 +28,12 @@ import {
 } from 'ionicons/icons';
 
 const StoreModal = (match) => {
+  const name = match.match.params.name;
 
-  const id = 1;
-
-  const charityName = 'Please put this as the charity name';
-  const charityWebsite = 'charityWebsite.com';
-  const charityDescription = `Here is the description of the charity. The Id is ${id}`;
-  const charityImage = 'asdf';
+  const storeName = 'Please put this as the store name';
+  const storeWebsite = 'storeWebsite.com';
+  const storeDescription = `Here is the description of the store. The name is ${name}`;
+  const storeImage = 'asdf';
 
   const [showActionSheet, setShowActionSheet] = useState(false);
   const [actionSheetButtons, setActionSheetButtons] = useState([]);
@@ -43,10 +42,10 @@ const StoreModal = (match) => {
   function openContact() {
     setActionSheetButtons([
       {
-        text: `${charityWebsite}`,
+        text: `${storeWebsite}`,
       },
     ]);
-    setActionSheetHeader('Here is the Website of the Charity');
+    setActionSheetHeader('Here is the Website of the store');
     setShowActionSheet(true);
   }
 
@@ -67,12 +66,12 @@ const StoreModal = (match) => {
         </IonHeader>
 
         <div className="speaker-background">
-          <img src={charityImage} alt="charityImage.png" />
-          <h2>{charityName}</h2>
+          <img src={storeImage} alt="storeImage.png" />
+          <h2>{storeName}</h2>
         </div>
 
         <div className="ion-padding speaker-detail">
-          <p>{charityDescription}</p>
+          <p>{storeDescription}</p>
 
           <hr />
         </div>
