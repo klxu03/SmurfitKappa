@@ -16,7 +16,8 @@ const signup = (req, res) => {
     }
     const type = newUser.type;
 
-    //TODO: valida the data
+    const noImg = 'Test.png'
+
     let token, userId;
     db.doc(`${type}s/${newUser.handle}`).get()
         .then(doc => {
@@ -40,7 +41,9 @@ const signup = (req, res) => {
                 handle: newUser.handle,
                 email: newUser.email,
                 createdAt: new Date().toISOString(),
-                token
+                imageUrl: `https://firebasestorage.googleapis.com/v0/b/
+                ${config.storageBucket}/o/${noImg}?alt=media`,
+                userId
             };
 
             return db.doc(`/${type}s/${newUser.handle}`).set(credentials);
@@ -73,7 +76,7 @@ const login = (req, res) => {
         })
         .catch(err => {
             console.error(err);
-            if(err.code === 'auth/wrong-password') {
+            if (err.code === 'auth/wrong-password') {
                 return res.status(403).json({ general: 'Wrong credentials, please try again' })
             } else {
                 return res.status(500).json({ error: err.code });
@@ -125,7 +128,7 @@ const uploadImage = (req, res) => {
             })
             .then(() => {
                 // Append token to url
-                const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media&token=${generatedToken}`; //Maybe take out &token=${generatedToken}
+                const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`; //Maybe take out &token=${generatedToken}
                 return db.doc(`/stores/${req.user.handle}`).update({ imageUrl });
             })
             .then(() => {
