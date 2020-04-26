@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { IonPage, IonButton, IonItem, IonLabel, IonInput, IonGrid, IonRow } from '@ionic/react';
 
-/* === Components === */
+import { SmurfitKappa } from "./img/SmurfitKappa.png";
 
 const Home = () => {
     const [pictures, setPictures] = useState([]);
@@ -36,6 +36,9 @@ const Home = () => {
     return (
         <IonPage>
             <IonGrid>
+                <IonRow>
+                    {/* <img src='./img/SmurfitKappa.png' /> */}
+                </IonRow>
                 <IonRow>
                     <ImageUploader
                         withIcon={true}
