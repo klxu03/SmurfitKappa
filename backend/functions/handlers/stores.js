@@ -43,7 +43,7 @@ const signup = (req, res) => {
                 token
             };
 
-            return db.doc(`/${type}s/${newUser.handle}`).set(credentials);            
+            return db.doc(`/${type}s/${newUser.handle}`).set(credentials);
         })
         .then(() => {
             return res.status(201).json({ token })
@@ -51,7 +51,30 @@ const signup = (req, res) => {
         .catch(err => {
             console.error(err);
             if (err.code === 'auth/email-already-in-use') {
-                return res.status(400).json( {email: 'Email is already in use '})
+                return res.status(400).json({ email: 'Email is already in use ' })
+            } else {
+                return res.status(500).json({ error: err.code });
+            }
+        })
+}
+
+const login = (req, res) => {
+    const user = {
+        email: req.body.email,
+        password: req.body.password
+    };
+
+    firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+        .then(data => {
+            return data.user.getIdToken();
+        })
+        .then(token => {
+            return res.json({ token });
+        })
+        .catch(err => {
+            console.error(err);
+            if(err.code === 'auth/wrong-password') {
+                return res.status(403).json({ general: 'Wrong credentials, please try again' })
             } else {
                 return res.status(500).json({ error: err.code });
             }
@@ -116,4 +139,4 @@ const uploadImage = (req, res) => {
     busboy.end(req.rawBody);
 }
 
-module.exports = { signup, uploadImage };
+module.exports = { signup, login, uploadImage };
