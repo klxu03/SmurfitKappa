@@ -1,40 +1,30 @@
 {
-  "name": "mobile",
+  "name": "react-native-fitness-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@capacitor/android": "2.0.1",
-    "@capacitor/cli": "^2.0.1",
-    "@capacitor/core": "^2.0.1",
-    "@ionic-native/barcode-scanner": "^5.24.0",
-    "@ionic/react": "^5.0.7",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-images-upload": "^1.2.8",
-    "react-scripts": "3.4.1"
+  "devDependencies": {
+    "react-native-scripts": "1.5.0",
+    "jest-expo": "^21.0.2",
+    "react-test-renderer": "16.0.0-alpha.12"
   },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "node node_modules/jest/bin/jest.js --watch"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "jest": {
+    "preset": "jest-expo"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "expo": "^21.0.0",
+    "react": "16.0.0-alpha.12",
+    "react-native": "^0.48.4",
+    "react-navigation": "^1.0.0-beta.19",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "udacifitness-calendar": "^11.0.0"
   }
 }
