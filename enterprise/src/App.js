@@ -50,8 +50,8 @@ const App = () => {
                 return <Login />
               }
             }} exact />
-            <Route path="/home" component={() => <Home id={userToken}/>} exact />
-            <Redirect from="/" to="/home" />
+            <Route path="/" component={() => <Home id={userToken}/>} exact />
+            {/* <Redirect from="/" to="/home" /> */}
             <Route path="/store/:name" component={StoreModal} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
@@ -59,7 +59,7 @@ const App = () => {
               <IonIcon icon={personCircleOutline} />
               <IonLabel>Profile</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="Home" href="/Home">
+            <IonTabButton tab="Home" href="/">
               <IonIcon icon={walletOutline} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
