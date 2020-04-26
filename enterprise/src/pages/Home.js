@@ -59,6 +59,9 @@ const Home = () => {
                         <IonInput type="text" ref={descriptionRef}></IonInput>
                     </IonItem>
                 </IonRow>
+                <IonRow>
+                <IonButton expand="block" href="/store/walmart">View Your Profile</IonButton>
+                </IonRow>
             </IonGrid>
             <IonButton expand="block" onClick={handleSubmit}>Submit</IonButton>
         </IonPage>
