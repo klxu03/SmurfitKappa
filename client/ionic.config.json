@@ -1,0 +1,7 @@
+{
+  "name": "SmurfitKappa Client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
