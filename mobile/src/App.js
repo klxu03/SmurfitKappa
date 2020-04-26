@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import ProgressBar from './progressBar.js';
 
+import Qr from './qr.js';
+
 import { IonApp } from '@ionic/react';
 
 /* === Components === */
@@ -14,6 +16,8 @@ function App() {
       <ImageUpload />
       <br></br>
       <ProgressBar/>
+      <br></br>
+      <Qr />
     </IonApp>
 
   );
