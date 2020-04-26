@@ -13,6 +13,8 @@ import ImageUpload from '../moreComponents/ImageUpload.js';
 function App() {
   return (
     <IonPage>
+            <IonButton expand="block" href="/store/walmart">Navigate to Store</IonButton>
+
       <Title/>
       <br></br>
       <Qr />
@@ -22,7 +24,6 @@ function App() {
 
       <ProgressBar/>
       <br></br>
-      <IonButton expand="block" href="/store/walmart">Submit</IonButton>
 
     </IonPage>
 
